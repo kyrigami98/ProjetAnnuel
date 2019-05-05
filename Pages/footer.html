@@ -1,3 +1,7 @@
+
+<!--==========================
+Modal des formulaires
+============================-->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -40,6 +44,9 @@
 </div>
 
 
+<!--==========================
+ Listes des salles
+============================-->
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -95,6 +102,129 @@
                     </header>
 
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--==========================
+ Modal de notification
+============================-->
+<!-- Modal -->
+<div id="myMod" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Notifications</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Numéro de salle</th>
+                            <th scope="col">Membres du groupe</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Heure de début</th>
+                            <th scope="col" class="">Rejoindre le groupe </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A1</th>
+                            <td>@Kyriel, @Brain @Kev</td>
+                            <td>12/05/2019</td>
+                            <td>12:00</td>
+                            <td>
+                                <button class='btn btn-success'> <i class='fa fa-play'></i> oui </button>
+                                <button class='btn btn-danger'> <i class='fa fa-stop'></i> non </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">A2</th>
+                            <td>@Kyriel, @Brain @Kev</td>
+                            <td>12/05/2019</td>
+                            <td>09:20</td>
+                            <td>
+                                <button class='btn btn-success'> <i class='fa fa-play'></i> oui </button>
+                                <button class='btn btn-danger'> <i class='fa fa-stop'></i> non </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--==========================
+ Modal de notification
+============================-->
+<div id="rdv" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Mes rendez-vous</h4>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Numéro de salle</th>
+                            <th scope="col">Membres du groupe</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Heure de début</th>
+                            <th scope="col" class="">Rejoindre le groupe </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <th scope="row">A2</th>
+                            <td>@Kyriel, @Brain @Kev</td>
+                            <td>12/05/2019</td>
+                            <td>09:20</td>
+                            <td>
+                                <button class='btn btn-danger'> <i class='fa fa-stop'></i> Annuler </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>    
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="ok" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Scanner un code</h4>
+            </div>
+            <div class="modal-body img-fluid">
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -176,5 +306,40 @@
 
 </script>
 
+<script type="text/javascript">
+
+    let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
+    
+    $("#startscan").click(function () {
+        $("#normal").hide();
+        $("#preview").show();
+        $("#stopscan").show();
+        $("#startscan").hide();
+
+        scanner.addListener('scan', function (content) {
+            alert(content);
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+            } else {
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+
+    });
+
+    $("#stopscan").click(function () {
+        $("#preview").hide();
+        $("#normal").show();
+        $("#stopscan").hide();
+        $("#startscan").show();
+        scanner.stop();
+    });
+
+
+</script>
 </body>
 </html>

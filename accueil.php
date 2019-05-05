@@ -28,25 +28,29 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s" data-toggle="modal" data-target="#rdv">
                     <div class="about-col">
                         <div class="img">
                             <img src="img/about-plan.jpg" alt="" class="img-fluid">
                             <div class="icon"><i class="ion-ios-list-outline"></i></div>
                         </div>
-                        <h2 class="title"><a href="#">Prendre Rendez-vous avec prof</a></h2>
+                        <h2 class="title"><a href="#">Voir mes rendez-vous</a></h2>
                         <p>
-                            Pouvoir faire une demande de prise de rdv avec un prof: si le prof exepte de vous recevoir la salle sera réserver </p>
+                            Pouvoir faire une demande de prise de rdv avec un prof ou des étudiants: si le prof exepte de vous recevoir la salle sera réserver </p>
                     </div>
                 </div>
 
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="about-col">
-                        <div class="img">
-                            <img src="img/about-vision.jpg" alt="" class="img-fluid">
-                            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                        <div class="img" id="scanner">
+                            <video id="preview" class="img-fluid cacher"></video>
+                            <div class="img" >
+                                <img src="img/about-vision.jpg" id="normal" alt="" class="img-fluid">
+                                <div class="icon" id="startscan"><i class="fa fa-qrcode"></i></div>
+                                <div class="icon cacher" id="stopscan"><i class="fa fa-stop"></i></div>
+                            </div>
                         </div>
-                        <h2 class="title"><a href="#">Scannez le code QR</a></h2>
+                        <h2 class="title"><a href="#">Scannez un code QR</a></h2>
                         <p>Si je scanne une salle occupée par des gens qui ne m'ont pas invité : message m'indiquant 
                             jusqu'à quelle heure la salle est occupée,
                             ou si elle est occupée toute la journée.  </p>
@@ -62,7 +66,7 @@
       Services Section
     ============================-->
     <section id="services">
-   
+
     </section><!-- #services -->
 
     <!--==========================
