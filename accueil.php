@@ -1,5 +1,7 @@
-<?php include_once 'Pages/header.html'; ?>
-
+<?php
+include_once 'Pages/header.php';
+include_once("traitement/connect.php");
+?>
 <main id="main">
 
     <!--==========================
@@ -9,9 +11,12 @@
         <div class="container">
 
             <header class="section-header"> <br> <br>
-                <h3>Que voulez-vous faire?</h3>
+                <h3>Welcome <?= $_SESSION['message'] ?></h3>
                 <br>
             </header>
+
+            <p class="wow"> <?= var_dump($_SESSION) ?></p>
+
 
             <div class="row about-cols">
 
@@ -162,4 +167,4 @@
 </main>
 
 
-<?php include_once 'Pages/footer.html'; ?>
+<?php include_once 'Pages/footer.php'; ?>

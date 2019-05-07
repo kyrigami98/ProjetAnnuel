@@ -47,7 +47,10 @@
             }
         </style>
 
-
+        <?php
+        session_start();
+        include_once("traitement/connect.php");
+        ?>
         <!--==========================
            Header
          ============================-->
@@ -56,29 +59,32 @@
             <div class="container-fluid">
 
                 <div id="logo" class="pull-left">
-                    <h1><a href="#intro" class="scrollto">Réservation de salle</a></h1>
+                    <h1><a href="index.php" class="scrollto">Réservation de salle</a></h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
                 </div>
 
                 <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li class="menu-active"><a href="accueil.php">Accueil</a></li>
-                        <li class="menu-has-children"  data-toggle="modal" data-target="#myMod">
-                            <a href="#">Notifications 
-                                <span class='badge-success circle' style="padding:3px;"> 10 </span>
-                            </a>
-                        </li>
-                        <li class="menu-has-children"><a href="">DOSSOU Kyriel</a>
-                            <ul>
-                                <li  data-toggle="modal" data-target="#rdv"><a href="#">Mes rendez-vous</a></li>
-                                <li class="">
-                                    <a href="#contact"><i class='fa fa-1x fa-power-off'></i> Deconnexion</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
+                    <?php if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) { ?>
+                        <ul class="nav-menu">
+                            <li class="menu-active"><a href="accueil.php">Accueil</a></li>
+                            <li class="menu-has-children"  data-toggle="modal" data-target="#myMod">
+                                <a href="#">Notifications 
+                                    <span class='badge-success circle' style="padding:3px;"> 10 </span>
+                                </a>
+                            </li>
+                            <li class="menu-has-children"><a href=""> <?= $_SESSION['nom'] . " " . $_SESSION['prenom'] ?></a>
+                                <ul>
+                                    <li  data-toggle="modal" data-target="#rdv"><a href="#">Mes rendez-vous</a></li>
+                                    <li class="">
+                                        <form method="POST" action="traitement/deconnexion.php">
+                                            <button class="btn btn-block" type="submit"  ><i class='fa fa-1x fa-power-off'></i> Deconnexion</button>
+                                        </form>  
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> 
+                    <?php } ?>
                 </nav><!-- #nav-menu-container -->
 
             </div>

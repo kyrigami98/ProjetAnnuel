@@ -1,5 +1,7 @@
-<?php include_once 'Pages/header.html'; ?>
-
+<?php
+include_once 'Pages/header.php';
+include_once("traitement/connect.php");
+?>
 
 <section id="intro">
     <div class="intro-container">
@@ -28,7 +30,7 @@
                         <div class="carousel-content">
                             <h2>Je suis professeur</h2>
                             <a id="connectProf" class="btn-get-started scrollto"
-                             data-toggle="modal" data-target="#exampleModalCenter">Se connecter</a
+                               data-toggle="modal" data-target="#exampleModalCenter">Se connecter</a>
                         </div>
                     </div>
                 </div>
@@ -60,4 +62,4 @@
                  </p-->
 
 
-<?php include_once 'Pages/footer.html'; ?>
+<?php include_once 'Pages/footer.php'; ?>

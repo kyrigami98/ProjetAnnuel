@@ -13,17 +13,24 @@ Modal des formulaires
             </div>
             <div class="modal-body">
 
+                <?php if (isset($_SESSION['error'])) { ?>
+                    <p class="btn btn-block btn-danger"><?= $_SESSION['error'] ?></p>
+                <?php $_SESSION = array(); session_destroy(); } ?>
+
                 <div class="cacher" id="Incriptionform">
-                    <form class="form" action="traitement/user.php">      
+                    <form class="form" action="traitement/inscription.php" method="post">    
+                        <input type="hidden" name="statut" value="etudiant"/>
                         <input class="form-control" type="text" name="nom" value="" placeholder="Nom" required=""/><br>
                         <input class="form-control" type="text" name="prenom" value="" placeholder="Prénom" required=""/><br>
                         <input class="form-control" type="email" name="email" value="" placeholder="Mail" required=""/><br>
+                        <input class="form-control" type="password" name="pass" value="" placeholder="Mot de passe" required=""/><br>                      
                         <input class="btn btn-block btn-success active " type="submit" value="S'inscrire" /><br>
                     </form>
                 </div>
 
                 <div class="cacher" id="connectEtudform">
-                    <form class="form" action="traitement/user.php">      
+                    <form class="form" action="traitement/identifier.php" method="post">    
+                        <input type="hidden" name="statut" value="etudiant"/>
                         <input class="form-control" type="email" name="mail" value="" placeholder="Mail de l'etudiant" required=""/><br>
                         <input class="form-control" type="password" name="pass" value="" placeholder="Mot de passe" required=""/><br>
                         <input class="btn btn-block btn-success active " type="submit" value="Connexion"/><br>
@@ -31,7 +38,8 @@ Modal des formulaires
                 </div>
 
                 <div class="cacher" id="connectProfform">
-                    <form class="form" action="traitement/user.php">      
+                    <form class="form" action="traitement/identifier.php" method="post">  
+                        <input type="hidden" name="statut" value="professeur"/>
                         <input class="form-control" type="email" name="mail" value="" placeholder="Mail du professeur" required=""/><br>
                         <input class="form-control" type="password" name="pass" value="" placeholder="Mot de passe" required=""/><br>
                         <input class="btn btn-block btn-success active " type="submit" value="Connexion"/><br>
@@ -309,7 +317,7 @@ Modal des formulaires
 <script type="text/javascript">
 
     let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
-    
+
     $("#startscan").click(function () {
         $("#normal").hide();
         $("#preview").show();
